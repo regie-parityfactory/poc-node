@@ -39,8 +39,11 @@ router.post("/register", async (req, res) => {
     // Add New Member to Mock Database
     mockDB.setHGOMembers(newMember);
 
+    const currentHGOMembers = mockDB.getHGOMembers();
+
     res.status(201).json({
-      newMember
+      newMember,
+      currentHGOMembers
     });
   } catch (error) {
     res.status(500).send("Something failed - " + error);
